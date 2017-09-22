@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="win" prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lahuman.WordCountController">
+   <top>
+      <Label text="Searching Word Count" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="400.0" spacing="10.0">
+               <children>
+                  <Label prefWidth="120.0" text="Words Directory :" />
+                  <TextField fx:id="wordPath" prefWidth="350.0" />
+                  <Button fx:id="wordBtn" mnemonicParsing="false" onAction="#findPath" text="Find" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="400.0" spacing="10.0">
+               <children>
+                  <Label prefWidth="120.0" text="Contents Directory :" />
+                  <TextField fx:id="contentsPath" prefWidth="350.0" />
+                  <Button fx:id="contentsBtn" mnemonicParsing="false" onAction="#findPath" text="Find" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="400.0" spacing="10.0">
+               <children>
+                  <Label prefWidth="120.0" text="Output Directory :" />
+                  <TextField fx:id="outputPath" prefWidth="350.0" />
+                  <Button fx:id="outputBtn" mnemonicParsing="false" onAction="#findPath" text="Find" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button fx:id="runBtn" minHeight="20.0" minWidth="50.0" mnemonicParsing="false" onAction="#processing" prefHeight="40.0" prefWidth="100.0" text="Run" />
+                  <ProgressBar fx:id="progressBar" prefWidth="400.0" progress="0.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ProgressBar>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Hyperlink alignment="CENTER" onAction="#goHomePage" text="https://lahuman.github.io" underline="true" />
+         </children>
+         <BorderPane.margin>
+            <Insets top="30.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>
