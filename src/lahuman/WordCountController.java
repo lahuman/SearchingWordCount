@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.commons.io.FilenameUtils;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
@@ -113,6 +111,9 @@ public class WordCountController {
 		alert.showAndWait();
 	}
 
+	private String removeExtension(String fileName) {
+		return fileName.substring(0, fileName.lastIndexOf("."));
+	}
 	private Task<Boolean> task(List<String> wordFiles , List<String> contentsFiles) {
 		return new Task<Boolean>() {
 
@@ -122,9 +123,9 @@ public class WordCountController {
 				final AtomicInteger increase = new AtomicInteger();
 				wordFiles.stream().forEach(wordFile -> {
 					for (String contentsFile : contentsFiles) {
-						final String outputTxtPath = outputPath.getText()+File.separator+FilenameUtils.removeExtension(wordFile) + "-"
-								+ FilenameUtils.removeExtension(contentsFile) + ".txt";
-						new WordFinder(wordPath.getText()+File.separator+wordFile, contentsPath.getText()+File.separator+contentsFile, outputTxtPath).run();
+						final String outputTxtPath = outputPath.getText()+File.separator+removeExtension(wordFile) + "-"
+								+ removeExtension(contentsFile) + ".txt";
+						new WordFinderTask(wordPath.getText()+File.separator+wordFile, contentsPath.getText()+File.separator+contentsFile, outputTxtPath).run();
 						updateMessage(outputTxtPath);
 						updateProgress(increase.incrementAndGet(), count);
 					}
