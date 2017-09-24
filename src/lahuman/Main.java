@@ -10,6 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			setUserAgentStylesheet(STYLESHEET_MODENA);
 			HostServicesProvider.INSTANCE.init(getHostServices());
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("WordCount.fxml"));
 			Scene scene = new Scene(root, 600, 250);
